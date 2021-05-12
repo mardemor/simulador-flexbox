@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Propriedades de container</title>
+
+  <link rel="stylesheet" href="./styles/reset.css">
+  <link rel="stylesheet" href="./styles/style.css">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <header>
+
+    <h1>Simulador FlexBox</h1>
+
+    <nav>
+      <ul>
+        <li><a href="./index.html">home</a></li>
+        <li><a href="./container.html">container</a></li>
+        <li><a href="./item.html">item</a></li>
+      </ul>
+    </nav>
+
+  </header>
+
+  <aside>
+
+    <form>
+
+      <fieldset>
+        <label>elementos</label>
+        <select onchange="quantidadeChanged(this)">
+          <option value="3" selected>3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          <option value="16">16</option>
+          <option value="24">24</option>
+        </select>
+      </fieldset>
+
+      <fieldset>
+        <label>width</label>
+        <select id="width" onchange="atributoChanged(this)">
+          <option value="auto" selected>auto (default)</option>
+          <option value="200px">200px</option>
+          <option value="300px">300px</option>
+          <option value="400px">400px</option>
+          <option value="500px">500px</option>
+          <option value="600px">600px</option>
+          <option value="700px">700px</option>
+          <option value="800px">800px</option>
+        </select>
+      </fieldset>
+
+      <fieldset>
+        <label>height</label>
+        <select id="height" onchange="atributoChanged(this)">
+          <option value="auto">auto (default)</option>
+          <option value="200px" selected>200px</option>
+          <option value="400px">400px</option>
+        </select>
+      </fieldset>
+
+      <fieldset>
+        <label>flex-direction</label>
+        <select id="flex-direction" onchange="atributoChanged(this)">
+          <option value="row" selected>row (default)</option>
+          <option value="column">column</option>
+          <option value="row-reverse">row-reverse</option>
+          <option value="column-reverse">column-reverse</option>
+        </select>
+      </fieldset>
+
+      <fieldset>
+        <label>justify-content</label>
+        <select id="justify-content" onchange="atributoChanged(this)">
+          <option value="flex-start" selected>flex-start (default)</option>
+          <option value="center">center</option>
+          <option value="flex-end">flex-end</option>
+          <option value="space-around">space-around</option>
+          <option value="space-between">space-between</option>
+        </select>
+      </fieldset>
+
+      <fieldset>
+        <label>align-items</label>
+        <select id="align-items" onchange="atributoChanged(this)">
+          <option value="stretch" selected>stretch (default)</option>
+          <option value="flex-start">flex-start</option>
+          <option value="center">center</option>
+          <option value="flex-end">flex-end</option>
+        </select>
+      </fieldset>
+
+      <fieldset>
+        <label>flex-wrap</label>
+        <select id="flex-wrap" onchange="atributoChanged(this)">
+          <option value="nowrap" selected>nowrap (default)</option>
+          <option value="wrap">wrap</option>
+          <option value="wrap-reverse">wrap-reverse</option>
+        </select>
+      </fieldset>
+
+      <fieldset>
+        <label>align-content</label>
+        <select id="align-content" onchange="atributoChanged(this)">
+          <option value="stretch" selected>stretch (default)</option>
+          <option value="flex-start">flex-start</option>
+          <option value="center">center</option>
+          <option value="flex-end">flex-end</option>
+          <option value="space-around">space-around</option>
+          <option value="space-between">space-between</option>
+        </select>
+      </fieldset>
+
+    </form>
+
+  </aside>
+
+  <main>
+
+    <h2>Propriedades do container</h2>
+
+    <p class="introducao">Nesta seção você pode simular os comportamentos das propriedades que são aplicadas ao
+      <strong>container</strong> FlexBox.
+    </p>
+
+    <section class="simulacao">
+
+      <div class="cor1">elemento 1</div>
+      <div class="cor1">elemento 2</div>
+      <div class="cor1">elemento 3</div>
+
+    </section>
+
+    <section class="teorico">
+
+      <h3>flex-direction</h3>
+      <p>Responsavel pela direção dos elementos. Os elementos podem ser dispostos em linha (row) ou em coluna (column).
+      </p>
+      <h3>justify-content</h3>
+      <p>Responsavel pelo agrupamento dos elementos. Eles podem ser agrupados no inicio (flex-start), centro (center) ou
+        final (flex-end) do container. Também é possível distribuir os elementos por toda a extensão do container, com
+        ou sem espaçamento nas extremidades (space-around e space-between respectivamente).</p>
+      <h3>align-items</h3>
+      <p>Responsavel pelo dimensionamento e posicionamento do elemento. O elemento pode ocupar todo o espaço disponível
+        dentro de uma linha/coluna do container (stretch). Ou então, ocupar apenas seu tamanho original e se posicionar
+        no
+        inicio (flex-start), centro (center) ou fim (flex-end) desta linha/coluna.</p>
+      <h3>flex-wrap</h3>
+      <p>Responsavel pelo comportamento dos elementos quando a soma de suas dimensões excederem a dimensão do container.
+        Os elementos podem ultrapassar a dimensão do container (nowrap). Ou então, podem ser reposicionados na(s)
+        próxima(s) linha(s) em ordem direta (wrap) ou em ordem inversa (wrap-reverse).</p>
+      <h3>align-content</h3>
+      <p>Responsavel pelo agrupamento das linhas de um container. As linhas podem ocupar toda a altura do container
+        (stretch). Ou então, ocupar apenas seu tamanho original e se posicionar no inicio (flex-start), centro (center),
+        final (flex-end) ou distribuidas (space-around / space-between) pelo container.</p>
+
+    </section>
+
+  </main>
+
+  <footer>
+    <address><a href="https://github.com/mardemor">github.com/mardemor</a></address>
+  </footer>
+
+  <script src="./scripts/container.js"></script>
+
+</body>
+
+</html>

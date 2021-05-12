@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Propriedades de elemento</title>
+
+  <link rel="stylesheet" href="./styles/reset.css">
+  <link rel="stylesheet" href="./styles/style.css">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <header>
+
+    <h1>Simulador FlexBox</h1>
+
+    <nav>
+      <ul>
+        <li><a href="./index.html">home</a></li>
+        <li><a href="./container.html">container</a></li>
+        <li><a href="./item.html">item</a></li>
+      </ul>
+    </nav>
+
+  </header>
+
+  <aside>
+
+    <form id="formulario">
+
+      <fieldset>
+        <label>elemento</label>
+        <select id="selectElemento" onchange="elementoChanged(this.value, formulario)">
+          <option value="elemento1">elemento 1</option>
+          <option value="elemento2">elemento 2</option>
+          <option value="elemento3">elemento 3</option>
+        </select>
+      </fieldset>
+
+      <fieldset>
+        <label>align-self</label>
+        <select id="alignSelf" onchange="atributoChanged(this, selectElemento.value)">
+          <option value="stretch">stretch (default)</option>
+          <option value="flex-start">flex-start</option>
+          <option value="center">center</option>
+          <option value="flex-end">flex-end</option>
+        </select>
+      </fieldset>
+
+      <fieldset>
+        <label>order</label>
+        <select id="order" onchange="atributoChanged(this, selectElemento.value)">
+          <option value="-1">-1</option>
+          <option value="0" selected>0 (default)</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
+      </fieldset>
+
+      <fieldset>
+        <label>flex-grow</label>
+        <select id="flexGrow" onchange="atributoChanged(this, selectElemento.value)">
+          <option value="0" selected>0 (default)</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+        </select>
+      </fieldset>
+
+      <fieldset>
+        <label>flex-shrink</label>
+        <select id="flexShrink" onchange="atributoChanged(this, selectElemento.value)">
+          <option value="0" selected>0 (default)</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+        </select>
+      </fieldset>
+
+      <fieldset>
+        <label>flex-basis</label>
+        <select id="flexBasis" onchange="atributoChanged(this, selectElemento.value)">
+          <option value="auto" selected>auto (default)</option>
+          <option value="120px">120px</option>
+          <option value="240px">240px</option>
+          <option value="360px">360px</option>
+          <option value="480px">480px</option>
+        </select>
+      </fieldset>
+
+    </form>
+
+  </aside>
+
+  <main>
+
+    <h2>Propriedades do item</h2>
+
+    <p class="introducao">Nesta seção você pode simular os comportamentos das propriedades que são aplicadas ao <strong>elemento</strong>
+      que está dentro de um container FlexBox.</p>
+
+    <section class="simulacao">
+
+      <div id="elemento1" class="cor1">elemento 1</div>
+      <div id="elemento2" class="cor2">elemento 2</div>
+      <div id="elemento3" class="cor3">elemento 3</div>
+
+    </section>
+
+    <section class="teorico">
+
+      <h3>align-self</h3>
+      <p>Responsavel pelo dimensionamento e posicionamento de elementos de forma individual. O elemento pode ocupar todo
+        o
+        espaço disponível dentro de uma linha/coluna do container (stretch). Ou então, ocupar apenas seu tamanho
+        original
+        e se posicionar no inicio (flex-start), centro (center) ou fim (flex-end) desta linha/coluna.</p>
+
+      <h3>order</h3>
+      <p>Responsavel pela ordem em que os elementos são posicionados no container. São válidos números inteiros
+        positivos
+        ou negativos.</p>
+
+      <h3>flex-grow</h3>
+      <p>Responsavel pelo redimensionamento e adequação dos elementos ao tamanho do container, caso a soma de suas
+        dimensões seja <strong>inferior</strong> à dimensão do container. Números inteiros maiores que zero afetam
+        proporcionalmente o espaço que cada elemento ocupará.</p>
+
+      <h3>flex-shrink</h3>
+      <p>Responsavel pelo redimensionamento e adequação dos elementos ao tamanho do container, caso a soma de suas
+        dimensões seja <strong>superior</strong> à dimensão do container. Números inteiros maiores que zero afetam
+        proporcionalmente o espaço que cada elemento ocupará.</p>
+
+      <h3>flex-basis</h3>
+      <p>Responsavel pela definição de uma dimensão inicial para o elemento. Influencia diretamente o comportamento das
+        propriedades flex-grow e flex-shrink.</p>
+
+    </section>
+
+  </main>
+
+  <footer>
+    <address><a href="https://github.com/mardemor">github.com/mardemor</a></address> 
+  </footer>
+
+  <script src="./scripts/item.js"></script>
+
+</body>
+
+</html>

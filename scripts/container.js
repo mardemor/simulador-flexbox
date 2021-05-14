@@ -1,47 +1,45 @@
-const simulacao = document.querySelector('.simulacao');
+const simulationContainer = document.querySelector('#simulationContainer');
+const codeContainer = document.querySelector('#codeContainer');
 
-    function quantidadeChanged(campo) {
-      simulacao.innerHTML = '';
-      const quantidade = parseInt(campo.value);
-      for (let i = 1; i <= quantidade; i++) {
-        const elemento = document.createElement('div');
-        elemento.classList.add('cor1');
-        elemento.textContent = `elemento ${i}`;
-        simulacao.appendChild(elemento);
-      }
-    }
+const flexContainerStyles = {
+  'width': 'auto', 
+  'height': '200px', 
+  'flex-direction': 'row', 
+  'justify-content': 'flex-start', 
+  'align-items': 'stretch', 
+  'flex-wrap': 'nowrap', 
+  'align-content': 'stretch'
+}
 
-    function atributoChanged(campo) {
-      simulacao.style[campo.id] = campo.value;
-    }
-  
+const itemsCountChanged = (selectElement) => {
+  simulationContainer.innerHTML = '';
+  const itemsCount = parseInt(selectElement.value);
+  for (let i = 1; i <= itemsCount; i++) {
+    const newItemElement = document.createElement('div');
+    newItemElement.classList.add('bgColor1');
+    newItemElement.textContent = `item ${i}`;
+    simulationContainer.appendChild(newItemElement);
+  }
+}
 
-    /*
-    function widthChanged(campo) {
-      simulacao.style.width = campo.value;
-    }
+const styleChanged = (selectElement) => {
+  simulationContainer.style[selectElement.id] = selectElement.value;
+  flexContainerStyles[selectElement.id] = selectElement.value;
+  showCode();
+}
 
-    function heightChanged(campo) {
-      simulacao.style.height = campo.value;
-    }
-
-    function directionChanged(campo) {
-      simulacao.style.flexDirection = campo.value;
-    }
-
-    function justifyChanged(campo) {
-      simulacao.style.justifyContent = campo.value;
-    }
-
-    function alignChanged(campo) {
-      simulacao.style.alignItems = campo.value;
-    }
-
-    function wrapChanged(campo) {
-      simulacao.style.flexWrap = campo.value;
-    }
-
-    function alignContentChanged(campo) {
-      simulacao.style.alignContent = campo.value;
-    }
-    */
+const showCode = () => {
+  const template = `
+  <pre>.flex-container {</pre>
+  <pre class="idented">display: flex;</pre>
+  <pre class="idented">width: ${flexContainerStyles['width']};</pre>
+  <pre class="idented">height: ${flexContainerStyles['height']};</pre>
+  <pre class="idented">flex-direction: ${flexContainerStyles['flex-direction']};</pre> 
+  <pre class="idented">justify-content: ${flexContainerStyles['justify-content']};</pre> 
+  <pre class="idented">align-items: ${flexContainerStyles['align-items']};</pre>
+  <pre class="idented">flex-wrap: ${flexContainerStyles['flex-wrap']};</pre>
+  <pre class="idented">align-content: ${flexContainerStyles['align-content']};</pre>
+  <pre>}</pre>      
+  `;
+  codeContainer.innerHTML = template;
+}

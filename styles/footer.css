@@ -1,0 +1,19 @@
+footer {
+    grid-area: footer;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    background-color:orangered;
+}
+
+address {
+    color: white;
+    font-size: 1.2rem;
+}
+
+@media (max-width: 767px) { 
+
+    address {
+        padding: 2rem 0;
+    }
+}

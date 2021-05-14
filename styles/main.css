@@ -1,0 +1,60 @@
+main {
+    grid-area: main;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;  
+}
+
+@media (max-width: 767px) {
+
+    main {
+        padding-bottom: 0;
+    }
+}
+
+.simulation-section, .concepts-section {
+    margin-bottom: 2rem;
+}
+
+@media (max-width: 767px) {
+
+    .introduction-section {
+        order: 0;
+    }
+
+    .concepts-section {
+        order: 1;
+        margin-bottom: 0;
+    }
+
+    .simulation-section {
+        order: 2;
+    }
+}
+
+.simulation-container {
+    background-color: lightgray;
+    display: flex;
+    width: auto;
+    height: 200px;
+}
+
+.simulation-container div {
+    border: 1px solid black;
+    width: auto;
+    min-width: 120px;
+    text-align: center;
+    padding: 0.5rem 0;
+    color: black;
+    flex-basis: auto;
+    flex-grow: 0;
+    flex-shrink: 0; 
+}
+
+@media (max-width: 450px) {
+
+    .simulation-container div {        
+        font-size: 0.8rem;
+        min-width: 80px;
+    }
+}

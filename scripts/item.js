@@ -1,37 +1,79 @@
-const simulacao = document.querySelector('.simulacao');
+const simulationContainer = document.querySelector('#simulationContainer');
+const codeContainer = document.querySelector('#codeContainer');
 
-
-const buffer = [
-    { id: 'elemento1', alignSelf: 'stretch', order: '0', flexGrow: '0', flexShrink: '0', flexBasis: '120px' },
-    { id: 'elemento2', alignSelf: 'stretch', order: '0', flexGrow: '0', flexShrink: '0', flexBasis: '120px' },
-    { id: 'elemento3', alignSelf: 'stretch', order: '0', flexGrow: '0', flexShrink: '0', flexBasis: '120px' },
+const flexContainerStyles = {'flex-direction': 'row'};
+const flexItemsStyles = [
+    { 'id': 'item1', 'align-self': 'stretch', 'order': '0', 'flex-grow': '0', 'flex-shrink': '0', 'flex-basis': 'auto' },
+    { 'id': 'item2', 'align-self': 'stretch', 'order': '0', 'flex-grow': '0', 'flex-shrink': '0', 'flex-basis': 'auto' },
+    { 'id': 'item3', 'align-self': 'stretch', 'order': '0', 'flex-grow': '0', 'flex-shrink': '0', 'flex-basis': 'auto' },
 ]
 
-function elementoChanged(idElemento, formulario) {
-    buffer.forEach(elemento => {
-        if (elemento.id == idElemento) {
-           formulario.alignSelf.value = elemento.alignSelf;
-           formulario.order.value = elemento.order;
-           formulario.flexGrow.value = elemento.flexGrow;
-           formulario.flexShrink.value = elemento.flexShrink;
-           formulario.flexBasis.value = elemento.flexBasis;
+const itemChanged = (stylesForm) => {
+
+    const itemsSelectElement = stylesForm['items'];
+    flexItemsStyles.forEach(item => {
+        if (item.id == itemsSelectElement.value) {
+           stylesForm['align-self'].value = item['align-self'];
+           stylesForm['order'].value = item['order'];
+           stylesForm['flex-grow'].value = item['flex-grow'];
+           stylesForm['flex-shrink'].value = item['flex-shrink'];
+           stylesForm['flex-basis'].value = item['flex-basis'];
         }
-    }); 
+    });
+    itemsSelectElement.style['background-color'] = findBgColor(itemsSelectElement.value);  
 }
 
-function atributoChanged(campo, idElemento) {
-
-    const elemento = document.querySelector(`#${idElemento}`);
-    elemento.style[campo.id] = campo.value;
-    guardarStatus(campo, idElemento);
+const directionChanged = (selectElement) => {
+    simulationContainer.style[selectElement.id] = selectElement.value;
+    flexContainerStyles[selectElement.id] = selectElement.value;
+    showCode();
 }
 
-function guardarStatus(campo, idElemento) {
+const styleChanged = (selectElement, itemId) => {
 
-    buffer.forEach(elemento => {
-        if (elemento.id == idElemento) {
-            elemento[campo.id] = campo.value;
-            console.log(buffer);
+    const item = document.querySelector(`#${itemId}`);
+    item.style[selectElement.id] = selectElement.value;
+    flexItemsStyles.forEach(item => {
+        if (item.id == itemId) {
+            item[selectElement.id] = selectElement.value;
         }
-    });    
+    });
+    showCode();
 }
+
+const findBgColor = (itemId) => {
+
+    switch(itemId) {
+
+        case 'item1':
+            return 'khaki';
+        case 'item2':
+            return 'lightsalmon';
+        case 'item3':
+            return 'paleturquoise';   
+
+    }
+}
+
+const showCode = () => {
+    const template = `
+        <pre>.container {</pre>
+        <pre class="idented">display: flex;</pre>
+        <pre class="idented">flex-direction: ${flexContainerStyles['flex-direction']};</pre> 
+        <pre>}</pre>
+        ${
+            flexItemsStyles.map(
+                item => `
+                    <pre>.${item['id']} {</pre>
+                    <pre class="idented">align-self: ${item['align-self']};</pre>
+                    <pre class="idented">order: ${item['order']};</pre>
+                    <pre class="idented">flex-grow: ${item['flex-grow']};</pre>
+                    <pre class="idented">flex-shrink: ${item['flex-shrink']};</pre>
+                    <pre class="idented">flex-basis: ${item['flex-basis']};</pre>
+                    <pre>}</pre>
+                `
+            ).join('')
+        } 
+    `;
+    codeContainer.innerHTML = template;
+  }
